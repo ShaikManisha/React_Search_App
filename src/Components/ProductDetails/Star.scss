@@ -1,0 +1,14 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css");
+.star-rating {
+  color: black;
+  align-items: center;
+  display: flex;
+  gap: 6px;
+  .fa {
+    color: rgb(198, 197, 197);
+  }
+
+  .checked {
+    color: #ffd700; // Gold color for checked stars
+  }
+}

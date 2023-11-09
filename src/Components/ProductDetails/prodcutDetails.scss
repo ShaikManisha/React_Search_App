@@ -1,0 +1,220 @@
+$border-color: #b4b1b1;
+$input-padding: 10px 15px 10px 10px;
+$input-width: 80%;
+$icon-position: 10%;
+
+.details {
+  padding: 22px 22px 0px 22px;
+  background-color: white;
+}
+
+.title-details {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 22px;
+
+  @media (max-width: 768px) {
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding-top: 10px;
+    margin-right: 0px;
+  }
+}
+.search-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -2%;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 50%;
+  @media (max-width: 768px) {
+    min-width: 70%;
+  }
+}
+
+.search {
+  padding: $input-padding;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  outline: none;
+  width: $input-width;
+  max-width: 500px;
+  background-color: white;
+  color: black;
+  @media (max-width: 768px) {
+    width: 60%;
+  }
+}
+
+.search-icon {
+  position: absolute;
+  right: $icon-position;
+  top: 50%;
+  font-size: x-large;
+  color: gray;
+  transform: translateY(-50%);
+
+  @media (max-width: 768px) {
+    top: 50%;
+    right: 47px;
+  }
+}
+
+.results-container {
+  display: flex;
+}
+.side-headings {
+  display: flex;
+  flex-direction: column;
+  min-width: 20%;
+  line-height: 28px;
+  gap: 9px;
+
+  .brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .brand-icon {
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    .check-box {
+      display: flex;
+      flex-direction: column;
+      font-size: smaller;
+      .input-field {
+        margin-right: 13px;
+      }
+    }
+    .price {
+      margin-right: 55px;
+    }
+
+    span {
+      margin-right: 100px;
+      font-weight: 500;
+    }
+  }
+}
+
+.divide {
+  height: 0.5px;
+  width: 166px;
+  background-color: gray;
+  opacity: 0.6;
+
+  @media (max-width: 768px) {
+    width: 100px;
+  }
+}
+.images-list {
+  width: 77%;
+  overflow-y: auto; /* Add this to enable vertical scrolling */
+  max-height: 430px; /* Adjust the maximum height as needed */
+
+  /* Customize the scrollbar */
+  scrollbar-width: thick;
+  scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.1);
+
+  .card-list {
+    .card-content {
+      position: relative;
+      display: inline-block;
+      margin: 10px;
+      overflow: hidden;
+      text-decoration: none;
+
+      .rating {
+        color: black;
+        align-items: center;
+        display: flex;
+        gap: 6px;
+        .fa {
+          color: rgb(198, 197, 197);
+        }
+
+        .checked {
+          color: #ffd700; // Gold color for checked stars
+        }
+      }
+
+      .heart-icon {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+        color: white;
+        transition: color 0.3s ease-in-out;
+
+        &.filled {
+          color: red;
+        }
+      }
+
+      .card-title {
+        display: block;
+        font-size: 16px;
+        margin-top: 10px;
+      }
+
+      .card-image {
+        max-width: 100%;
+        height: 200px; /* Set your desired fixed height */
+        display: block;
+        object-fit: cover;
+      }
+
+      .view-product-button {
+        position: absolute;
+        bottom: 100px;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        color: white;
+        border: none;
+        opacity: 0.8;
+        background-color: #7b8ceb;
+        text-align: center;
+        transition: background-color 0.3s ease-in-out;
+
+        &:hover {
+          background-color: #7b8ceb;
+        }
+      }
+    }
+  }
+}
+
+.rankings {
+  line-height: 13px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Customize the scrollbar pseudo-elements */
+.images-list::-webkit-scrollbar {
+  width: 4px; /* Adjust the width to make the scrollbar thicker */
+}
+
+.images-list::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.images-list::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1);
+}
