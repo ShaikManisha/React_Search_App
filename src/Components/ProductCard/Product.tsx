@@ -14,7 +14,11 @@ const Product = ({ products, isLoading }: any) => {
           {products?.map((item: any, index: any) => (
             <div className="card-content" key={index}>
               <Link to={`/product/${item?.id}`} className="link">
-                <img className="card-image" src={item?.image} alt="Fashion" />
+                <img
+                  className="card-image"
+                  src={item?.images[0]}
+                  alt="Fashion"
+                />
                 <span className="card-title">{item?.title}</span>
               </Link>
             </div>

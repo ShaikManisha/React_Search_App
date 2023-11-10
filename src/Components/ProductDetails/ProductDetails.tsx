@@ -24,10 +24,10 @@ const ProductDetail = () => {
   useEffect(() => {
     // Fetch data from the API when the component mounts
     axios
-      .get("https://fakestoreapi.com/products")
+      .get("https://dummyjson.com/products")
       .then((response) => {
         // Set the products data in the state
-        setProducts(response.data);
+        setProducts(response?.data?.products);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -56,7 +56,7 @@ const ProductDetail = () => {
   //   setSelectedProduct(product);
   // };
 
-  const filteredProducts = products.filter((product: any) =>
+  const filteredProducts = products?.filter((product: any) =>
     product.title.toLowerCase().includes(inputValue.toLowerCase())
   );
 
@@ -137,39 +137,39 @@ const ProductDetail = () => {
                 <div
                   className="card-content"
                   key={index}
-                  onMouseEnter={() => handleProductHover(item.id)}
+                  onMouseEnter={() => handleProductHover(item?.id)}
                   onMouseLeave={handleProductLeave}
                   // onClick={() => handleProductClick(item.id)}
                 >
-                  <Link to={`/product/${item.id}`} className="link">
+                  <Link to={`/product/${item?.id}`} className="link">
                     <img
                       className="card-image"
-                      src={item.image}
+                      src={item?.images[0]}
                       alt="Fashion"
                     />
-                    {hoveredProduct === item.id && (
+                    {hoveredProduct === item?.id && (
                       <button className="view-product-button">
                         View Product
                       </button>
                     )}
-                    {wishlist[item.id] ? (
+                    {wishlist[item?.id] ? (
                       <AiFillHeart
                         className="heart-icon filled"
-                        onClick={() => toggleWishlist(item.id)}
+                        onClick={() => toggleWishlist(item?.id)}
                       />
                     ) : (
                       <BiHeart
                         className="heart-icon"
-                        onClick={() => toggleWishlist(item.id)}
+                        onClick={() => toggleWishlist(item?.id)}
                       />
                     )}
                   </Link>
                   <div className="rankings">
                     <span className="card-title">
                       {" "}
-                      {item.title.length > 20
-                        ? `${item.title.slice(0, 20)}...`
-                        : item.title}
+                      {item?.title.length > 20
+                        ? `${item?.title.slice(0, 20)}...`
+                        : item?.title}
                     </span>
                     <p>
                       <del style={{ color: "gray" }}>Rs.599</del>

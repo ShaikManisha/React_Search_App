@@ -9,16 +9,16 @@ import Product from "../ProductCard/Product";
 const Search = () => {
   const [inputValue, setInputValue] = useState<string>("");
   const [isProductVisible, setIsProductVisible] = useState(false);
-  const [products, setProducts] = useState<any>([]);
+  const [products, setProducts] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Fetch data from the API when the component mounts
     axios
-      .get("https://fakestoreapi.com/products")
+      .get("https://dummyjson.com/products")
       .then((response) => {
         // Set the products data in the state
-        setProducts(response.data);
+        setProducts(response?.data?.products);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -34,14 +34,12 @@ const Search = () => {
     setIsProductVisible(true);
   };
 
-  // const handleInputBlur = () => {
-  //   setIsProductVisible(false);
-  // };
-
-  const filteredProducts = products.filter((product: any) => {
-    const searchTerm = inputValue.toLowerCase();
-    return product.title.toLowerCase().includes(searchTerm);
-  });
+  const filteredProducts = products
+    ? products?.filter((product: any) => {
+        const searchTerm = inputValue.toLowerCase();
+        return product.title.toLowerCase().includes(searchTerm);
+      })
+    : [];
 
   return (
     <div className="search-background">
@@ -57,7 +55,6 @@ const Search = () => {
             value={inputValue}
             onChange={handleInputChange}
             onClick={handleInputClick}
-            // onBlur={handleInputBlur}
           />
           <i className="search-icon">
             <FiSearch />
